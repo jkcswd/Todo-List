@@ -6,6 +6,26 @@ class Todo {
         this.priority = priority;
         this.notes = notes;
     }
+
+    set setTitle(title) {
+        this.title = title;
+    }
+
+    set setDesciption(desc) {
+        this.description = desc;
+    }
+
+    set setDate(date) {
+        this.dueDate = date;
+    }
+
+    set setPriority(prio) {
+        this.priority = prio;
+    }
+
+    set setNotes(notes) {
+        this.notes = notes;
+    }
 }
 
 class Project {
@@ -20,15 +40,14 @@ class Project {
     }
 }
 
-const populateProjects = ()=> {
+let projects = []; //data holder 
 
+const initProjects = () => {
+    const defaultProject = new Project('Default', 'Default List');
+    const exampleTodo = new Todo('Todo', 'example', '1/1/1',1,'This is an example todo item', defaultProject);
+    defaultProject.addTodoObj(exampleTodo);
+    projects.push(defaultProject);
 }
 
-const deleteTodo = (project,todo) => {
 
-}
-const editTodo = () => {
-
-}
-
-export { };
+export { projects, initProjects };
