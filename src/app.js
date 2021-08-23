@@ -51,6 +51,7 @@ class Project {
 let projects = []; //data holder 
 
 const initProjects = () => {
+    //Should this be here or in index.js?
     const defaultProject = new Project('Default', 'Default List');
     const exampleTodo = new Todo('Todo', 'example', '1/1/1',1,'This is an example todo item', defaultProject);
     defaultProject.addTodoObj(exampleTodo);
