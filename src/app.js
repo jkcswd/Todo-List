@@ -12,3 +12,5 @@ const deleteTodo = (project,todo) => {
 const editTodo = () => {
 
 }
+
+export { createTodo, createProject}
