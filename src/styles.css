@@ -1,0 +1,38 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    border: solid 1px red;
+    text-align: center;
+}
+main {
+    border: solid 1px red;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+}
+.sidebar {
+    border: solid 1px red;
+    width: 30%;
+}
+.display {
+    border: solid 1px red;
+
+    width: 70%;
+}
+
+footer {
+    border: solid 1px red;
+
+    height:50px;
+
+    text-align: center;
+}
