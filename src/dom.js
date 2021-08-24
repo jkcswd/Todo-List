@@ -2,6 +2,7 @@ import { projects,addProject, addTodo } from "./app"
 
 const loadProjects = () => {
     const projectsDiv = document.querySelector('.projects');
+    let count = 0;
 
     projectsDiv.innerHTML = ''
     projectsDiv.innerHTML += '<h2>Projects</h2><button class="project-btn">+</button>'
@@ -10,6 +11,8 @@ const loadProjects = () => {
         //O(n^2) canditate for refactor.
         const projectDiv = document.createElement('div');
 
+        projectDiv.setAttribute('data-index', `${count}`);
+        count++;
         projectDiv.innerHTML += `<h3>${project.title}</h3><p>${project.description}</p>`
         projectsDiv.appendChild(projectDiv);
 
@@ -33,8 +36,9 @@ const loadProjects = () => {
 const getTodo = () => {
     const todoBtn = document.querySelector('.todo-btn');
 
-    todoBtn.addEventListener('click', ()=> {
+    todoBtn.addEventListener('click', (e)=> {
         const data = prompt('Add todo, format: title, description, dueDate, priority, notes');
+        const project = e.currentTarget.parentElement.classList;
 
         addTodo(data);
         loadProjects();
