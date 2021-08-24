@@ -1,5 +1,5 @@
 import { initProjects } from "./app";
-import { loadProjects, getProject, getTodo} from "./dom"
+import { loadProjects } from "./dom"
 
 const runApp = (()=>{
     initProjects();
