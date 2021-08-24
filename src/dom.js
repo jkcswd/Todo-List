@@ -1,6 +1,7 @@
 import { projects,addProject, addTodo } from "./app"
 
 const loadProjects = () => {
+    //long function look at splitting
     const projectsDiv = document.querySelector('.projects');
     let count = 0;
 
@@ -38,25 +39,59 @@ const getTodo = () => {
 
     [...todoBtns].forEach( todoBtn => {
         todoBtn.addEventListener('click', (e)=> {
-            const data = prompt('Add todo, format: title, description, dueDate, priority, notes');
-            const project = parseInt(e.currentTarget.parentElement.dataset.index)
-    
-            addTodo(data, project);
-            loadProjects();
-            
-        })
+            const project = parseInt(e.currentTarget.parentElement.dataset.index);
+            const modal = document.querySelector('.modal-todo');
+            const saveBtn = document.querySelector('.save-todo');
+            const closeBtn = document.querySelector('.close-todo');
+            const inputs = document.querySelectorAll('.inputs-todo');
 
+            modal.style.display = "block";
+
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = "none";
+                inputs.forEach( input  => input.value = '');
+            });
+        
+            saveBtn.addEventListener('click', () => {
+                modal.style.display = "none";
+                const title = document.querySelector('.title-todo').value;
+                const description = document.querySelector('.description-todo').value;
+                const dueDate = document.querySelector('.due-date-todo').value;
+                const priority = document.querySelector('.priority-todo').value;
+                const notes = document.querySelector('.notes-todo').value;
+                  
+                addTodo(title,description,dueDate,priority,notes,project);
+                loadProjects();
+                inputs.forEach(input  => input.value = '');
+            });            
+        })
     })
 }
+
 const getProject = () => {
     const projectBtn = document.querySelector('.project-btn');
+    const modal = document.querySelector('.modal-project');
+    const saveBtn = document.querySelector('.save-project');
+    const closeBtn = document.querySelector('.close-project');
+    const inputs = document.querySelectorAll('.inputs-project');
 
     projectBtn.addEventListener('click', ()=> {
-        const data = prompt('Add Project, format: title, description');
+        modal.style.display = "block";
+    });
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = "none";
+        inputs.forEach( input  => input.value = '');
+    });
 
-        addProject(data);
+    saveBtn.addEventListener('click', () => {
+        modal.style.display = "none";
+        const title = document.querySelector('.title-project').value;
+        const description = document.querySelector('.description-project').value;
+
+        addProject(title,description);
         loadProjects();
-    })
+        inputs.forEach(input  => input.value = '');
+    });
 
 }
 

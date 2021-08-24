@@ -50,15 +50,13 @@ class Project {
 
 let projects = []; //data holder 
 
-const addProject = (data) => {
-    const arr = data.split(',');
-    const newProject = new Project(arr[0],arr[1]);
+const addProject = (title,description) => {
+    const newProject = new Project(title,description);
     projects.push(newProject);
 }
 
-const addTodo = (data,project) => {
-    const arr = data.split(',');
-    const newTodo = new Todo(arr[0],arr[1],arr[2],arr[3],arr[4]);
+const addTodo = (title,description,dueDate, priority, notes, project) => {
+    const newTodo = new Todo(title,description,dueDate, priority, notes);
 
     projects[project].todoList.push(newTodo);
 }
