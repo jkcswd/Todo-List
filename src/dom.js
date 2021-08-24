@@ -1,7 +1,10 @@
-import { projects } from "./app"
+import { projects,addProject, addTodo } from "./app"
 
 const loadProjects = () => {
     const projectsDiv = document.querySelector('.projects');
+
+    projectsDiv.innerHTML = ''
+    projectsDiv.innerHTML += '<h2>Projects</h2>'
 
     projects.forEach(project => {
         //O(n^2) canditate for refactor.
@@ -25,7 +28,9 @@ const getTodo = () => {
     todoBtn.addEventListener('click', ()=> {
         const data = prompt('Add todo, format: title, description, dueDate, priority, notes');
 
-        return data;
+        addTodo(data);
+        loadProjects();
+        
     })
 
 }
@@ -35,7 +40,8 @@ const getProject = () => {
     projectBtn.addEventListener('click', ()=> {
         const data = prompt('Add Project, format: title, description');
 
-        return data;
+        addProject(data);
+        loadProjects();
     })
 
 }
