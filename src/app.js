@@ -56,16 +56,17 @@ const addProject = (data) => {
     projects.push(newProject);
 }
 
-const addTodo = (data, project) => {
+const addTodo = (data,project) => {
     const arr = data.split(',');
     const newTodo = new Todo(arr[0],arr[1],arr[2],arr[3],arr[4]);
-    project.todoList.push(newProject);
+
+    projects[project].todoList.push(newTodo);
 }
 
 const initProjects = () => {
     //Should this be here or in index.js?
     const defaultProject = new Project('Default', 'Default List');
-    const exampleTodo = new Todo('Todo', 'example', '1/1/1',1,'This is an example todo item', defaultProject);
+    const exampleTodo = new Todo('Todo', 'example', '1/1/1','1','This is an example todo item', defaultProject);
     defaultProject.addTodoObj(exampleTodo);
     projects.push(defaultProject);
 }
