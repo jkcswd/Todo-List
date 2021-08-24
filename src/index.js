@@ -4,6 +4,4 @@ import { loadProjects, getProject, getTodo} from "./dom"
 const runApp = (()=>{
     initProjects();
     loadProjects();
-    getTodo();
-    getProject();
 })();
