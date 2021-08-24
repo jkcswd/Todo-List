@@ -34,17 +34,19 @@ const loadProjects = () => {
 }
 
 const getTodo = () => {
-    const todoBtn = document.querySelector('.todo-btn');
+    const todoBtns = document.querySelectorAll('.todo-btn');
 
-    todoBtn.addEventListener('click', (e)=> {
-        const data = prompt('Add todo, format: title, description, dueDate, priority, notes');
-        const project = e.currentTarget.parentElement.classList;
+    [...todoBtns].forEach( todoBtn => {
+        todoBtn.addEventListener('click', (e)=> {
+            const data = prompt('Add todo, format: title, description, dueDate, priority, notes');
+            const project = parseInt(e.currentTarget.parentElement.dataset.index)
+    
+            addTodo(data, project);
+            loadProjects();
+            
+        })
 
-        addTodo(data);
-        loadProjects();
-        
     })
-
 }
 const getProject = () => {
     const projectBtn = document.querySelector('.project-btn');
