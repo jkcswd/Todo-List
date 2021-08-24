@@ -4,7 +4,7 @@ const loadProjects = () => {
     const projectsDiv = document.querySelector('.projects');
 
     projectsDiv.innerHTML = ''
-    projectsDiv.innerHTML += '<h2>Projects</h2>'
+    projectsDiv.innerHTML += '<h2>Projects</h2><button class="project-btn">Add Project</button>'
 
     projects.forEach(project => {
         //O(n^2) canditate for refactor.
@@ -18,8 +18,16 @@ const loadProjects = () => {
 
             todoDiv.innerHTML += todo.title;
             projectDiv.appendChild(todoDiv);
-        })
+        });
+        const todoBtn = document.createElement('button');
+
+        todoBtn.classList.add('todo-btn');
+        todoBtn.innerHTML = 'Add Todo';
+        projectDiv.appendChild(todoBtn);
     });
+
+    getProject();
+    getTodo();
 }
 
 const getTodo = () => {
