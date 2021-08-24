@@ -8,13 +8,48 @@
 </head>
 <body>
     <header><h1>Todo list</h1></header>
+
     <main>
         <div class="sidebar">
             <div class="projects"><h2>Projects</h2></div>
         </div>
         <div class="display"></div>
     </main>
+
     <footer>Created by James Spencer</footer>
+
+    <div class="modal-project modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <button class="save">Save</button>
+            <form action="main.js" class="form">
+                <label for="title">Title:</label>
+                <input type="text" id="title" class="title inputs"/>
+                <label for="description">Description:</label>
+                <input type="text" id="description" class="description inputs"/>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-todo modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <button class="save">Save</button>
+            <form action="main.js" class="form">
+                <label for="title">Title:</label>
+                <input type="text" id="title" class="title inputs"/>
+                <label for="description">Description:</label>
+                <input type="text" id="description" class="description inputs"/>
+                <label for="due-date">Due date:</label>
+                <input type="date" id="due-date" class="due-date inputs"/>
+                <label for="priority">Priority:</label>
+                <input type="number" id="priority" class="priority inputs">
+                <label for="notes">Notes:</label>
+                <input type="number" id="notes" class="notes inputs">
+            </form>
+        </div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>
