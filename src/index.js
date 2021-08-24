@@ -1,5 +1,13 @@
-import { initProjects, projects } from "./app";
-import { loadProjects } from "./dom"
+import { initProjects } from "./app";
+import { loadProjects, getProject, getTodo} from "./dom"
 
-initProjects();
-loadProjects();
+
+const runApp = (()=>{
+    initProjects();
+    loadProjects();
+    getTodo();
+    getProject();
+})();
+
+
+
