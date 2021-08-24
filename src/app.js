@@ -50,6 +50,18 @@ class Project {
 
 let projects = []; //data holder 
 
+const addProject = (data) => {
+    const arr = data.split(',');
+    const newProject = new Project(arr[0],arr[1]);
+    projects.push(newProject);
+}
+
+const addTodo = (data, project) => {
+    const arr = data.split(',');
+    const newTodo = new Todo(arr[0],arr[1],arr[2],arr[3],arr[4]);
+    project.todoList.push(newProject);
+}
+
 const initProjects = () => {
     //Should this be here or in index.js?
     const defaultProject = new Project('Default', 'Default List');
@@ -59,4 +71,4 @@ const initProjects = () => {
 }
 
 
-export { projects, initProjects };
+export { projects, initProjects, addProject, addTodo };
