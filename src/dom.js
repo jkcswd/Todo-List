@@ -43,7 +43,7 @@ const getTodo = () => {
             const modal = document.querySelector('.modal-todo');
             const saveBtn = document.querySelector('.save-todo');
             const closeBtn = document.querySelector('.close-todo');
-            const inputs = document.querySelectorAll('.inputs-todo');
+            const inputs = document.querySelectorAll('.inputs');
 
             modal.style.display = "block";
 
@@ -73,7 +73,7 @@ const getProject = () => {
     const modal = document.querySelector('.modal-project');
     const saveBtn = document.querySelector('.save-project');
     const closeBtn = document.querySelector('.close-project');
-    const inputs = document.querySelectorAll('.inputs-project');
+    const inputs = document.querySelectorAll('.inputs');
 
     projectBtn.addEventListener('click', ()=> {
         modal.style.display = "block";
