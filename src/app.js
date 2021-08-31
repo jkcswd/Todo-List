@@ -69,5 +69,4 @@ const initProjects = () => {
     projects.push(defaultProject);
 }
 
-
 export { projects, initProjects, addProject, addTodo };
