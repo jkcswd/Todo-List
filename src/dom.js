@@ -1,23 +1,14 @@
 import { projects,addProject, addTodo } from "./app"
 
 const loadProjects = () => {
-    const projectsDiv = document.querySelector('.projects');
-    let count = 0;
+    const domCountAndProjectObject = {
+        projectsDiv : document.querySelector('.projects'),
+        count : 0,
+        projects : projects
+    };
 
-    clearDOM(projectsDiv);
-
-    projects.forEach(project => {
-        const projectDiv = document.createElement('div');
-
-        projectDiv.setAttribute('data-index', `${count}`);
-        count++;
-        projectDiv.innerHTML += `<h3>${project.title}</h3><p>${project.description}</p>`
-        projectsDiv.appendChild(projectDiv);
-
-        loadTodoItems(project, projectDiv);
-        addTodoButton(projectDiv);
-    });
-
+    clearDOM(domCountAndProjectObject.projectsDiv);
+    addEachProjectToDom(domCountAndProjectObject);
     getProject();
     getTodo();
 }
@@ -25,6 +16,20 @@ const loadProjects = () => {
 const clearDOM = (projectsDiv) => {
     projectsDiv.innerHTML = ''
     projectsDiv.innerHTML += '<h2>Projects</h2><button class="project-btn">+</button>'
+}
+
+const addEachProjectToDom = (domCountAndProjectObject) => {
+    domCountAndProjectObject.projects.forEach(project => {
+        const projectDiv = document.createElement('div');
+
+        projectDiv.setAttribute('data-index', `${domCountAndProjectObject.count}`);
+        domCountAndProjectObject.count++;
+        projectDiv.innerHTML += `<h3>${project.title}</h3><p>${project.description}</p>`
+        domCountAndProjectObject.projectsDiv.appendChild(projectDiv);
+
+        loadTodoItems(project, projectDiv);
+        addTodoButton(projectDiv);
+    });
 }
 
 const loadTodoItems = (project, projectDiv) => {
