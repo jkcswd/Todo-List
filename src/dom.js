@@ -49,7 +49,7 @@ const addTodoButton = (projectDiv) => {
     projectDiv.appendChild(todoBtn);
 }
 
-const addProjectEventListeners = () => { //gets called multiple times???
+const addProjectEventListeners = () => {
     const domElementsObject = {
         projectBtn : document.querySelector('.project-btn'),
         modal : document.querySelector('.modal-project'),
@@ -69,9 +69,10 @@ const projectButtonEventListener = (domElementsObject) => {
     });
 }
 
-const projectModalSaveEventListener = (domElementsObject) => {
+const projectModalSaveEventListener = (domElementsObject) => { //bug here?
     domElementsObject.saveBtn.addEventListener('click', () => {
         domElementsObject.modal.style.display = "none";
+
         const title = document.querySelector('.title-project').value;
         const description = document.querySelector('.description-project').value;
 
@@ -88,7 +89,6 @@ const addTodoEventListeners = () => {
         closeBtn : document.querySelector('.close-todo'),
         inputs : document.querySelectorAll('.inputs-todo'),
         modal : document.querySelector('.modal-todo'),
-        project : null
     };
     
     todoButtonsEventListener(domElementsObject);
@@ -99,8 +99,10 @@ const addTodoEventListeners = () => {
 const todoButtonsEventListener = (domElementsObject) => {
     domElementsObject.todoBtns.forEach( todoBtn => { 
         todoBtn.addEventListener('click', (e)=> {
+            const projectDataIndex = e.currentTarget.parentElement.dataset.index; //here
+
+            domElementsObject.saveBtn.dataset.index = projectDataIndex;
             domElementsObject.modal.style.display = "block";
-            domElementsObject.project = parseInt(e.currentTarget.parentElement.dataset.index);
         });
     });
 }
@@ -115,7 +117,7 @@ const todoModalSaveEventListener = (domElementsObject) => {
             dueDate : document.querySelector('.due-date-todo').value,
             priority : document.querySelector('.priority-todo').value,
             notes : document.querySelector('.notes-todo').value,
-            project : domElementsObject.project
+            project : parseInt(domElementsObject.saveBtn.dataset.index) //here
         };
 
         domElementsObject.inputs.forEach(input  => input.value = '');
