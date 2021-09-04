@@ -44,41 +44,6 @@ const addTodoButton = (projectDiv) => {
     projectDiv.appendChild(todoBtn);
 }
 
-
-
-const getTodo = () => {
-    const domElementsObject = {
-        todoBtns : document.querySelectorAll('.todo-btn'),
-        saveBtn : document.querySelector('.save-todo'),
-        closeBtn : document.querySelector('.close-todo'),
-        inputs : document.querySelectorAll('.inputs-todo'),
-        modal : document.querySelector('.modal-todo'),
-        project : null
-    }
-    
-    todoBtns.forEach( todoBtn => { 
-        todoBtn.addEventListener('click', (e)=> {
-            modal.style.display = "block";
-            project = parseInt(e.currentTarget.parentElement.dataset.index);
-        });
-    });
-    
-    closeButton(domElementsObject);
-    
-    saveBtn.addEventListener('click', () => {
-        modal.style.display = "none";
-        const title = document.querySelector('.title-todo').value;
-        const description = document.querySelector('.description-todo').value;
-        const dueDate = document.querySelector('.due-date-todo').value;
-        const priority = document.querySelector('.priority-todo').value;
-        const notes = document.querySelector('.notes-todo').value;
-
-        inputs.forEach(input  => input.value = '');
-        addTodo(title,description,dueDate,priority,notes,project);
-        loadProjects();
-    });            
-}
-
 const getProject = () => { //gets called multiple times???
     const projectBtn = document.querySelector('.project-btn');
     const modal = document.querySelector('.modal-project');
@@ -106,11 +71,54 @@ const getProject = () => { //gets called multiple times???
     });
 }
 
-const closeButton = (domElementsObject) => {
+const getTodo = () => {
+    const domElementsObject = {
+        todoBtns : document.querySelectorAll('.todo-btn'),
+        saveBtn : document.querySelector('.save-todo'),
+        closeBtn : document.querySelector('.close-todo'),
+        inputs : document.querySelectorAll('.inputs-todo'),
+        modal : document.querySelector('.modal-todo'),
+        project : null
+    };
+    
+    todoButtonsEventListener(domElementsObject);
+    closeButtonEventListener(domElementsObject);
+    todoModalSaveEventListener(domElementsObject);
+}
+
+const todoButtonsEventListener = (domElementsObject) => {
+    domElementsObject.todoBtns.forEach( todoBtn => { 
+        todoBtn.addEventListener('click', (e)=> {
+            domElementsObject.modal.style.display = "block";
+            domElementsObject.project = parseInt(e.currentTarget.parentElement.dataset.index);
+        });
+    });
+}
+
+const closeButtonEventListener = (domElementsObject) => {
     domElementsObject.closeBtn.addEventListener('click', () => {
         domElementsObject.modal.style.display = "none";
         domElementsObject.inputs.forEach( input  => input.value = '');
     });
+}
+
+const todoModalSaveEventListener = (domElementsObject) => {
+    domElementsObject.saveBtn.addEventListener('click', () => {
+        domElementsObject.modal.style.display = "none";
+
+        const formFieldsObject = {
+            title : document.querySelector('.title-todo').value,
+            description : document.querySelector('.description-todo').value,
+            dueDate : document.querySelector('.due-date-todo').value,
+            priority : document.querySelector('.priority-todo').value,
+            notes : document.querySelector('.notes-todo').value,
+            project : domElementsObject.project
+        };
+
+        domElementsObject.inputs.forEach(input  => input.value = '');
+        addTodo(formFieldsObject);
+        loadProjects();
+    });            
 }
 
 export { loadProjects }

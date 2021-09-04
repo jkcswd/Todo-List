@@ -55,10 +55,14 @@ const addProject = (title,description) => {
     projects.push(newProject);
 }
 
-const addTodo = (title,description,dueDate, priority, notes, project) => {
-    const newTodo = new Todo(title,description,dueDate, priority, notes);
+const addTodo = (formFieldsObject) => {
+    const newTodo = new Todo(formFieldsObject.title,
+                             formFieldsObject.description,
+                             formFieldsObject.dueDate, 
+                             formFieldsObject.priority, 
+                             formFieldsObject.notes);
 
-    projects[project].todoList.push(newTodo);
+    projects[formFieldsObject.project].todoList.push(newTodo);
 }
 
 const initProjects = () => {
