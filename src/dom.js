@@ -1,5 +1,11 @@
 import { projects,addProject, addTodo } from "./app"
 
+//TODO: fix the bug caused by calling the event listeners for save and close multiple times by refactoring to only call once!!!!
+
+const initialLoadEventListeners = () => {
+    //put the save and close modal event listenrs in here and call this once in the index.js run function.
+}
+
 const loadProjects = () => {
     const domCountAndProjectObject = {
         projectsDiv : document.querySelector('.projects'),
@@ -9,8 +15,8 @@ const loadProjects = () => {
 
     clearDOM(domCountAndProjectObject.projectsDiv);
     addEachProjectToDom(domCountAndProjectObject);
-    addProjectEventListeners();
-    addTodoEventListeners();
+    addProjectEventListeners(); //bug 
+    addTodoEventListeners(); //bug
 }
 
 const clearDOM = (projectsDiv) => {
@@ -59,8 +65,8 @@ const addProjectEventListeners = () => {
     }
     
     projectButtonEventListener(domElementsObject);
-    closeButtonEventListener(domElementsObject);
-    projectModalSaveEventListener(domElementsObject);
+    closeButtonEventListener(domElementsObject); //bug this should only be called at begining once
+    projectModalSaveEventListener(domElementsObject); //bug this should only be called at begining once
 }
 
 const projectButtonEventListener = (domElementsObject) => {
@@ -69,7 +75,7 @@ const projectButtonEventListener = (domElementsObject) => {
     });
 }
 
-const projectModalSaveEventListener = (domElementsObject) => { //bug here?
+const projectModalSaveEventListener = (domElementsObject) => { 
     domElementsObject.saveBtn.addEventListener('click', () => {
         domElementsObject.modal.style.display = "none";
 
@@ -92,8 +98,8 @@ const addTodoEventListeners = () => {
     };
     
     todoButtonsEventListener(domElementsObject);
-    closeButtonEventListener(domElementsObject);
-    todoModalSaveEventListener(domElementsObject);
+    closeButtonEventListener(domElementsObject); //bug this should only be called at begining once
+    todoModalSaveEventListener(domElementsObject); //bug this should only be called at begining once
 }
 
 const todoButtonsEventListener = (domElementsObject) => {
