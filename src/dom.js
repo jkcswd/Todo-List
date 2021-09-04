@@ -99,7 +99,7 @@ const addTodoEventListeners = () => {
 const todoButtonsEventListener = (domElementsObject) => {
     domElementsObject.todoBtns.forEach( todoBtn => { 
         todoBtn.addEventListener('click', (e)=> {
-            const projectDataIndex = e.currentTarget.parentElement.dataset.index; //here
+            const projectDataIndex = e.currentTarget.parentElement.dataset.index;
 
             domElementsObject.saveBtn.dataset.index = projectDataIndex;
             domElementsObject.modal.style.display = "block";
@@ -117,7 +117,7 @@ const todoModalSaveEventListener = (domElementsObject) => {
             dueDate : document.querySelector('.due-date-todo').value,
             priority : document.querySelector('.priority-todo').value,
             notes : document.querySelector('.notes-todo').value,
-            project : parseInt(domElementsObject.saveBtn.dataset.index) //here
+            project : parseInt(domElementsObject.saveBtn.dataset.index) 
         };
 
         domElementsObject.inputs.forEach(input  => input.value = '');
