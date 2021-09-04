@@ -48,7 +48,7 @@ class Project {
     }
 }
 
-let projects = []; //data holder 
+let projects = []; 
 
 const addProject = (title,description) => {
     const newProject = new Project(title,description);
@@ -62,11 +62,10 @@ const addTodo = (formFieldsObject) => {
                              formFieldsObject.priority, 
                              formFieldsObject.notes);
 
-    projects[formFieldsObject.project].todoList.push(newTodo);
+    projects[formFieldsObject.project].addToObj(newTodo);
 }
 
 const initProjects = () => {
-    //Should this be here or in index.js?
     const defaultProject = new Project('Default', 'Default List');
     const exampleTodo = new Todo('Todo', 'example', '1/1/1','1','This is an example todo item', defaultProject);
     defaultProject.addTodoObj(exampleTodo);
