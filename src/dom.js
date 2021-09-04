@@ -45,27 +45,32 @@ const addTodoButton = (projectDiv) => {
 }
 
 const getProject = () => { //gets called multiple times???
-    const projectBtn = document.querySelector('.project-btn');
-    const modal = document.querySelector('.modal-project');
-    const saveBtn = document.querySelector('.save-project');
-    const closeBtn = document.querySelector('.close-project');
-    const inputs = document.querySelectorAll('.inputs-project');
+    const domElementsObject = {
+        projectBtn : document.querySelector('.project-btn'),
+        modal : document.querySelector('.modal-project'),
+        saveBtn : document.querySelector('.save-project'),
+        closeBtn : document.querySelector('.close-project'),
+        inputs : document.querySelectorAll('.inputs-project')
+    }
+    
+    projectButtonEventListener(domElementsObject);
+    closeButtonEventListener(domElementsObject);
+    projectModalSaveEventListener(domElementsObject);
+}
 
-    projectBtn.addEventListener('click', ()=> {
-        modal.style.display = "block";
+const projectButtonEventListener = (domElementsObject) => {
+    domElementsObject.projectBtn.addEventListener('click', ()=> {
+        domElementsObject.modal.style.display = "block";
     });
+}
 
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = "none";
-        inputs.forEach( input  => input.value = '');
-    });
-
-    saveBtn.addEventListener('click', () => {
-        modal.style.display = "none";
+const projectModalSaveEventListener = (domElementsObject) => {
+    domElementsObject.saveBtn.addEventListener('click', () => {
+        domElementsObject.modal.style.display = "none";
         const title = document.querySelector('.title-project').value;
         const description = document.querySelector('.description-project').value;
 
-        inputs.forEach(input  => input.value = '');
+        domElementsObject.inputs.forEach(input  => input.value = '');
         addProject(title,description);
         loadProjects();
     });
