@@ -9,8 +9,8 @@ const loadProjects = () => {
 
     clearDOM(domCountAndProjectObject.projectsDiv);
     addEachProjectToDom(domCountAndProjectObject);
-    getProject();
-    getTodo();
+    addProjectEventListeners();
+    addTodoEventListeners();
 }
 
 const clearDOM = (projectsDiv) => {
@@ -49,7 +49,7 @@ const addTodoButton = (projectDiv) => {
     projectDiv.appendChild(todoBtn);
 }
 
-const getProject = () => { //gets called multiple times???
+const addProjectEventListeners = () => { //gets called multiple times???
     const domElementsObject = {
         projectBtn : document.querySelector('.project-btn'),
         modal : document.querySelector('.modal-project'),
@@ -81,7 +81,7 @@ const projectModalSaveEventListener = (domElementsObject) => {
     });
 }
 
-const getTodo = () => {
+const addTodoEventListeners = () => {
     const domElementsObject = {
         todoBtns : document.querySelectorAll('.todo-btn'),
         saveBtn : document.querySelector('.save-todo'),
@@ -105,13 +105,6 @@ const todoButtonsEventListener = (domElementsObject) => {
     });
 }
 
-const closeButtonEventListener = (domElementsObject) => {
-    domElementsObject.closeBtn.addEventListener('click', () => {
-        domElementsObject.modal.style.display = "none";
-        domElementsObject.inputs.forEach( input  => input.value = '');
-    });
-}
-
 const todoModalSaveEventListener = (domElementsObject) => {
     domElementsObject.saveBtn.addEventListener('click', () => {
         domElementsObject.modal.style.display = "none";
@@ -129,6 +122,13 @@ const todoModalSaveEventListener = (domElementsObject) => {
         addTodo(formFieldsObject);
         loadProjects();
     });            
+}
+
+const closeButtonEventListener = (domElementsObject) => {
+    domElementsObject.closeBtn.addEventListener('click', () => {
+        domElementsObject.modal.style.display = "none";
+        domElementsObject.inputs.forEach( input  => input.value = '');
+    });
 }
 
 export { loadProjects }
