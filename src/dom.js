@@ -25,8 +25,9 @@ const addEachProjectToDom = (domCountAndProjectObject) => {
         const projectDiv = document.createElement('div');
 
         projectDiv.setAttribute('data-index', `${domCountAndProjectObject.count}`);
+        projectDiv.classList.add('project');
         domCountAndProjectObject.count++;
-        projectDiv.innerHTML += `<h3>${project.title}</h3><p>${project.description}</p>`
+        projectDiv.innerHTML += `<h3>${project.title}</h3><p>${project.description}</p>`;
         domCountAndProjectObject.projectsDiv.appendChild(projectDiv);
 
         loadTodoItems(project, projectDiv);
@@ -61,11 +62,44 @@ const addProjectEventListeners = () => {
     }
     
     projectButtonEventListener(domElementsObject);
+    displayProjectEventListener();
 
     if (!eventListenersInitialised) {
         closeButtonEventListener(domElementsObject); 
         projectModalSaveEventListener(domElementsObject); 
     }
+}
+
+const displayProjectEventListener = () => {
+    const projectNodeList = document.querySelectorAll('.project');
+    const display = document.querySelector('.display');
+
+    projectNodeList.forEach(project => {
+        project.addEventListener('click', (e) => {
+            const projectObject = projects[parseInt(e.currentTarget.dataset.index)];
+            const projectDiv = document.createElement('div');
+            const todoContainer = renderTodosForProject(projectObject);
+
+            display.innerHTML = '';
+            projectDiv.innerHTML += `<h2>${projectObject.title}</h2><p>${[projectObject.description]}</p>`;
+            projectDiv.appendChild(todoContainer);
+            display.appendChild(projectDiv);
+        });
+    });
+}
+
+const renderTodosForProject = (projectObject) => {
+    const todoContainer = document.createElement('div');
+
+    projectObject.todoList.forEach(todo => {
+        const todoDiv = document.createElement('div');
+
+        todoDiv.innerHTML += `<h3>${todo.title}</h3><p>${todo.description}</p><p>${todo.dueDate}</p>
+                                <p>${todo.priority}</p><p>${todo.notes}</p>`;
+        todoContainer.appendChild(todoDiv);
+    });
+
+    return todoContainer;
 }
 
 const projectButtonEventListener = (domElementsObject) => {
