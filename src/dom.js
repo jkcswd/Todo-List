@@ -1,10 +1,6 @@
 import { projects,addProject, addTodo } from "./app"
 
-//TODO: fix the bug caused by calling the event listeners for save and close multiple times by refactoring to only call once!!!!
-
-const initialLoadEventListeners = () => {
-    //put the save and close modal event listenrs in here and call this once in the index.js run function.
-}
+let eventListenersInitialised = false;
 
 const loadProjects = () => {
     const domCountAndProjectObject = {
@@ -13,13 +9,13 @@ const loadProjects = () => {
         projects : projects
     };
 
-    clearDOM(domCountAndProjectObject.projectsDiv);
+    clearProjectsDOM(domCountAndProjectObject.projectsDiv);
     addEachProjectToDom(domCountAndProjectObject);
-    addProjectEventListeners(); //bug 
-    addTodoEventListeners(); //bug
+    addProjectEventListeners(); 
+    addTodoEventListeners(); 
 }
 
-const clearDOM = (projectsDiv) => {
+const clearProjectsDOM = (projectsDiv) => {
     projectsDiv.innerHTML = ''
     projectsDiv.innerHTML += '<h2>Projects</h2><button class="project-btn">+</button>'
 }
@@ -65,8 +61,11 @@ const addProjectEventListeners = () => {
     }
     
     projectButtonEventListener(domElementsObject);
-    closeButtonEventListener(domElementsObject); //bug this should only be called at begining once
-    projectModalSaveEventListener(domElementsObject); //bug this should only be called at begining once
+
+    if (!eventListenersInitialised) {
+        closeButtonEventListener(domElementsObject); 
+        projectModalSaveEventListener(domElementsObject); 
+    }
 }
 
 const projectButtonEventListener = (domElementsObject) => {
@@ -98,8 +97,11 @@ const addTodoEventListeners = () => {
     };
     
     todoButtonsEventListener(domElementsObject);
-    closeButtonEventListener(domElementsObject); //bug this should only be called at begining once
-    todoModalSaveEventListener(domElementsObject); //bug this should only be called at begining once
+    if (!eventListenersInitialised) {
+        closeButtonEventListener(domElementsObject); 
+        todoModalSaveEventListener(domElementsObject); 
+        eventListenersInitialised = true;
+    }
 }
 
 const todoButtonsEventListener = (domElementsObject) => {
