@@ -1,31 +1,11 @@
 class Todo {
-    constructor(title,description,dueDate, priority, notes){
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.notes = notes;
-    }
-
-    set setTitle(title) {
-        this.title = title;
-    }
-
-    set setDesciption(desc) {
-        this.description = desc;
-    }
-
-    set setDate(date) {
-        this.dueDate = date;
-    }
-
-    set setPriority(prio) {
-        this.priority = prio;
-    }
-
-    set setNotes(notes) {
-        this.notes = notes;
-    }
+  constructor (title, description, dueDate, priority, notes) {
+    this.title = title
+    this.description = description
+    this.dueDate = dueDate
+    this.priority = priority
+    this.notes = notes
+  }
 }
 
 class Project {
