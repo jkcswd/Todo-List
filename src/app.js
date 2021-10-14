@@ -15,14 +15,6 @@ class Project {
     this.todoList = []
   }
 
-  set setTitle(title){
-      this.title = title;
-  }
-
-  set setDesciption(desc){
-      this.description = desc;
-  }
-
   addTodoObj (todoObj) {
     this.todoList.push(todoObj)
   }
