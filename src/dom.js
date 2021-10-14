@@ -115,7 +115,7 @@ const projectModalSaveEventListener = (domElementsObject) => {
     const title = document.querySelector('.title-project').value
     const description = document.querySelector('.description-project').value
 
-    domElementsObject.inputs.forEach(input  => input.value = '')
+    domElementsObject.inputs.forEach(input => { input.value = '' })
     addProject(title, description)
     loadProjects()
   })
@@ -162,7 +162,7 @@ const todoModalSaveEventListener = (domElementsObject) => {
       project: parseInt(domElementsObject.saveBtn.dataset.index)
     }
 
-    domElementsObject.inputs.forEach(input  => input.value = '')
+    domElementsObject.inputs.forEach(input => { input.value = '' })
     addTodo(formFieldsObject)
     loadProjects()
   })
@@ -171,7 +171,7 @@ const todoModalSaveEventListener = (domElementsObject) => {
 const closeButtonEventListener = (domElementsObject) => {
   domElementsObject.closeBtn.addEventListener('click', () => {
     domElementsObject.modal.style.display = 'none'
-    domElementsObject.inputs.forEach( input  => input.value = '')
+    domElementsObject.inputs.forEach(input => { input.value = '' })
   })
 }
 
