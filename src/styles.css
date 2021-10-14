@@ -1,3 +1,5 @@
+/* general */
+
 html {
   font-family: Arial, Helvetica, sans-serif;
   color:whitesmoke;
@@ -6,6 +8,26 @@ html {
 body {
   margin: 0;
 }
+
+h1 {
+  font-size: 50px;
+  padding: 0px;
+  margin: 0px
+}
+
+h2 {
+  font-size: 30px;
+  padding: 0px;
+  margin: 0px
+}
+
+h3 {
+  font-size: 20px;
+  padding: 0px;
+  margin: 0px
+}
+
+/* main content */
 
 header {
   background-color: #0f149a;
@@ -32,6 +54,7 @@ main {
   width: 20%;
   padding: 10px;
 }
+
 .display {
   background-color: #0f149a;
   color: whitesmoke;
@@ -52,6 +75,28 @@ footer {
   align-items: center;
   justify-content: center;
 }
+/* buttons */
+.todo-btn,.project-btn {
+  background-color: #0f149a;
+  color: #fd9b4d;
+  border: none;
+
+  transition:1s;
+}
+
+.todo-btn:hover,.project-btn:hover {
+  transform: rotate(360deg) scale(1.1);
+}
+
+.todo-btn {
+  font-size: 30px;
+}
+
+.project-btn {
+  font-size: 50px;
+}
+
+/* modal */
 
 .modal {
   display: none;
@@ -63,6 +108,7 @@ footer {
   top: 0;
   left: 0;
 }
+
 .modal-content {
   width: 60%;
   height: 60%;
