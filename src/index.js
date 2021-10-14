@@ -1,7 +1,7 @@
-import { initProjects } from "./app";
-import { loadProjects } from "./dom"
+import { initProjects } from './app'
+import { loadProjects } from './dom'
 
-const runApp = (()=>{
-    initProjects();
-    loadProjects();
-})();
+const runApp = (() => {
+  initProjects()
+  loadProjects()
+})()
