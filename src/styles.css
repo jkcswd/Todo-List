@@ -42,11 +42,15 @@ main {
 }
 
 footer {
-
+  background-color: #0f149a;
+  color: whitesmoke;
+  border-top: 2px solid #fd9b4d ;
 
   height:50px;
 
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal {
