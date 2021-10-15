@@ -55,6 +55,18 @@ main {
   padding: 10px;
 }
 
+.project {
+  border: 1px solid #fd9b4d;
+  border-radius: 10px;
+  padding: 5px;
+  margin:10px;
+  box-shadow: 5px 5px 2px  rgba(253,155,77, 0.5);
+  transition: 0.3s;
+}
+.project:hover {
+  scale: 1.05;
+}
+
 .display {
   background-color: #0f149a;
   color: whitesmoke;
@@ -75,6 +87,7 @@ footer {
   align-items: center;
   justify-content: center;
 }
+
 /* buttons */
 .todo-btn,.project-btn {
   background-color: #0f149a;
@@ -86,6 +99,7 @@ footer {
 
 .todo-btn:hover,.project-btn:hover {
   transform: rotate(360deg) scale(1.1);
+  color: whitesmoke;
 }
 
 .todo-btn {
