@@ -91,15 +91,15 @@ footer {
 
 /* buttons */
 .todo-btn,.project-btn {
-  background-color: #0f149a;
+  background-color: rgba(0,0,0,0);
   color: #fd9b4d;
   border: none;
 
-  transition:1s;
+  transition:0.3s;
 }
 
 .todo-btn:hover,.project-btn:hover {
-  transform: rotate(360deg) scale(1.1);
+  transform: scale(1.3);
   color: whitesmoke;
 }
 
