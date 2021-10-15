@@ -77,6 +77,11 @@ main {
   width: 80%;
 }
 
+.display h2 {
+  text-decoration: underline;
+  font-size: 50px;
+}
+
 footer {
   background-color: #0f149a;
   color: whitesmoke;
