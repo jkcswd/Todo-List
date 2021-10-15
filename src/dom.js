@@ -33,6 +33,7 @@ const addEachProjectToDom = (domCountAndProjectObject) => {
 
     loadTodoItems(project, projectDiv)
     addTodoButton(projectDiv)
+    addProjectDeleteButton(projectDiv)
   })
 }
 
@@ -51,6 +52,14 @@ const addTodoButton = (projectDiv) => {
   todoBtn.classList.add('todo-btn')
   todoBtn.innerHTML = '+'
   projectDiv.appendChild(todoBtn)
+}
+
+const addProjectDeleteButton = (projectDiv) => {
+  const deleteBtn = document.createElement('button')
+
+  deleteBtn.classList.add('delete-btn')
+  deleteBtn.innerHTML = 'Delete'
+  projectDiv.appendChild(deleteBtn)
 }
 
 const addProjectEventListeners = () => {
