@@ -1,7 +1,8 @@
 import { initProjects } from './app'
-import { loadProjects } from './dom'
+import { loadProjects, initLocalStorageEventListeners } from './dom'
 
 const runApp = (() => {
+  initLocalStorageEventListeners()
   initProjects()
   loadProjects()
 })()
