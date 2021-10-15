@@ -1,4 +1,5 @@
 import { projects, addProject, addTodo } from './app'
+import { storeData, clearData, retrieveData } from './storage.js'
 
 let eventListenersInitialised = false
 
@@ -174,5 +175,34 @@ const closeButtonEventListener = (domElementsObject) => {
     domElementsObject.inputs.forEach(input => { input.value = '' })
   })
 }
+const initLocalStorageEventListeners = () => {
+  localStorageSaveEventListener()
+  localStorageClearEventListener()
+  localStorageLoadEventListener()
+}
 
-export { loadProjects }
+const localStorageSaveEventListener = () => {
+  const saveBtn = document.querySelector('.storage-save')
+
+  saveBtn.addEventListener('click', () => {
+    storeData()
+  })
+}
+const localStorageClearEventListener = () => {
+  const clearBtn = document.querySelector('.storage-clear')
+
+  clearBtn.addEventListener('click', () => {
+    clearData()
+  })
+}
+
+const localStorageLoadEventListener = () => {
+  const loadBtn = document.querySelector('.storage-load')
+
+  loadBtn.addEventListener('click', () => {
+    projects.splice(0, projects.length) // removes all elements from original array
+    projects.push(retrieveData())
+  })
+}
+
+export { loadProjects, initLocalStorageEventListeners }
