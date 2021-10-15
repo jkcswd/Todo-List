@@ -113,6 +113,16 @@ const renderTodosForProject = (projectObject) => {
   return todoContainer
 }
 
+const deleteTodoEventListener = () => {
+  const deleteBtns = document.querySelectorAll('.delete-todo')
+
+  deleteBtns.forEach(deleteBtn => {
+    deleteBtn.addEventListener('click', () => {
+      
+    })
+  })
+}
+
 const projectButtonEventListener = (domElementsObject) => {
   domElementsObject.projectBtn.addEventListener('click', () => {
     domElementsObject.modal.style.display = 'block'
