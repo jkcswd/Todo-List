@@ -42,6 +42,7 @@ const addTodo = (formFieldsObject) => {
 const initProjects = () => {
   const defaultProject = new Project('Default', 'Default List')
   const exampleTodo = new Todo('Todo', 'example', '1/1/1', '1', 'This is an example todo item', defaultProject)
+
   defaultProject.addTodoObj(exampleTodo)
   projects.push(defaultProject)
 }
