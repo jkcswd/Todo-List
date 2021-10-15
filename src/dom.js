@@ -202,6 +202,7 @@ const localStorageLoadEventListener = () => {
   loadBtn.addEventListener('click', () => {
     projects.splice(0, projects.length) // removes all elements from original array
     projects.push(retrieveData())
+    loadProjects()
   })
 }
 
