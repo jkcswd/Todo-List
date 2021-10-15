@@ -94,21 +94,26 @@ const displayProjectEventListener = () => {
       projectDiv.innerHTML += `<h2>${projectObject.title}</h2><p>${[projectObject.description]}</p>`
       projectDiv.appendChild(todoContainer)
       display.appendChild(projectDiv)
+      deleteTodoEventListener(projectObject)
     })
   })
 }
+// TODO separate rendering and event listener
 
 const renderTodosForProject = (projectObject) => {
   const todoContainer = document.createElement('div')
+  let todoCount = 0
 
   projectObject.todoList.forEach(todo => {
     const todoDiv = document.createElement('div')
 
     todoDiv.classList.add('todo-div')
+    todoDiv.setAttribute('data-index', `${todoCount}`)
     todoDiv.innerHTML += `<h3>${todo.title}</h3><p>${todo.description}</p><p>${todo.dueDate}</p>
                           <p>${todo.priority}</p><p>${todo.notes}</p>
                           <button class="delete-todo">Delete Todo</button>`
     todoContainer.appendChild(todoDiv)
+    todoCount++
   })
 
   return todoContainer
@@ -118,8 +123,9 @@ const deleteTodoEventListener = (projectObject) => {
   const deleteBtns = document.querySelectorAll('.delete-todo')
 
   deleteBtns.forEach(deleteBtn => {
-    deleteBtn.addEventListener('click', () => {
-      
+    deleteBtn.addEventListener('click', (e) => {
+      const dataIndex = e.currentTarget.parentElement.dataset.index
+      projectObject.todoList.splice(dataIndex, 1)
     })
   })
 }
