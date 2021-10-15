@@ -79,7 +79,6 @@ const addProjectEventListeners = () => {
     projectModalSaveEventListener(domElementsObject)
   }
 }
-//here
 
 const displayProjectEventListener = () => {
   const projectNodeList = document.querySelectorAll('.project')
@@ -91,7 +90,6 @@ const displayProjectEventListener = () => {
     })
   })
 }
-// TODO separate rendering and event listener
 
 const renderProjectToDisplay = (projectObject) => {
   const display = document.querySelector('.display')
@@ -130,12 +128,13 @@ const deleteTodoEventListener = (projectObject) => {
   deleteBtns.forEach(deleteBtn => {
     deleteBtn.addEventListener('click', (e) => {
       const dataIndex = e.currentTarget.parentElement.dataset.index
+
       projectObject.todoList.splice(dataIndex, 1)
+      loadProjects()
+      renderProjectToDisplay(projectObject)
     })
   })
 }
-
-// here
 
 const projectButtonEventListener = (domElementsObject) => {
   domElementsObject.projectBtn.addEventListener('click', () => {
