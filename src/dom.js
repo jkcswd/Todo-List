@@ -105,7 +105,8 @@ const renderTodosForProject = (projectObject) => {
     const todoDiv = document.createElement('div')
 
     todoDiv.innerHTML += `<h3>${todo.title}</h3><p>${todo.description}</p><p>${todo.dueDate}</p>
-                                <p>${todo.priority}</p><p>${todo.notes}</p>`
+                          <p>${todo.priority}</p><p>${todo.notes}</p>
+                          <button class="delete-todo">Delete Todo</button>`
     todoContainer.appendChild(todoDiv)
   })
 
@@ -224,7 +225,7 @@ const localStorageLoadEventListener = () => {
   const retrievedData = retrieveData()
 
   loadBtn.addEventListener('click', () => {
-    projects.splice(0, projects.length) // removes all elements from original array
+    projects.splice(0, projects.length)
     projects.push(...retrievedData)
     loadProjects()
   })
