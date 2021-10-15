@@ -104,6 +104,7 @@ const renderTodosForProject = (projectObject) => {
   projectObject.todoList.forEach(todo => {
     const todoDiv = document.createElement('div')
 
+    todoDiv.classList.add('todo-div')
     todoDiv.innerHTML += `<h3>${todo.title}</h3><p>${todo.description}</p><p>${todo.dueDate}</p>
                           <p>${todo.priority}</p><p>${todo.notes}</p>
                           <button class="delete-todo">Delete Todo</button>`
@@ -113,7 +114,7 @@ const renderTodosForProject = (projectObject) => {
   return todoContainer
 }
 
-const deleteTodoEventListener = () => {
+const deleteTodoEventListener = (projectObject) => {
   const deleteBtns = document.querySelectorAll('.delete-todo')
 
   deleteBtns.forEach(deleteBtn => {
