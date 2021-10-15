@@ -79,26 +79,31 @@ const addProjectEventListeners = () => {
     projectModalSaveEventListener(domElementsObject)
   }
 }
+//here
 
 const displayProjectEventListener = () => {
   const projectNodeList = document.querySelectorAll('.project')
-  const display = document.querySelector('.display')
 
   projectNodeList.forEach(project => {
     project.addEventListener('click', (e) => {
       const projectObject = projects[parseInt(e.currentTarget.dataset.index)]
-      const projectDiv = document.createElement('div')
-      const todoContainer = renderTodosForProject(projectObject)
-
-      display.innerHTML = ''
-      projectDiv.innerHTML += `<h2>${projectObject.title}</h2><p>${[projectObject.description]}</p>`
-      projectDiv.appendChild(todoContainer)
-      display.appendChild(projectDiv)
-      deleteTodoEventListener(projectObject)
+      renderProjectToDisplay(projectObject)
     })
   })
 }
 // TODO separate rendering and event listener
+
+const renderProjectToDisplay = (projectObject) => {
+  const display = document.querySelector('.display')
+  const projectDiv = document.createElement('div')
+  const todoContainer = renderTodosForProject(projectObject)
+
+  display.innerHTML = ''
+  projectDiv.innerHTML += `<h2>${projectObject.title}</h2><p>${[projectObject.description]}</p>`
+  projectDiv.appendChild(todoContainer)
+  display.appendChild(projectDiv)
+  deleteTodoEventListener(projectObject)
+}
 
 const renderTodosForProject = (projectObject) => {
   const todoContainer = document.createElement('div')
@@ -129,6 +134,8 @@ const deleteTodoEventListener = (projectObject) => {
     })
   })
 }
+
+// here
 
 const projectButtonEventListener = (domElementsObject) => {
   domElementsObject.projectBtn.addEventListener('click', () => {
