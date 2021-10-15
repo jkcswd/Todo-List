@@ -198,10 +198,11 @@ const localStorageClearEventListener = () => {
 
 const localStorageLoadEventListener = () => {
   const loadBtn = document.querySelector('.storage-load')
+  const retrievedData = retrieveData()
 
   loadBtn.addEventListener('click', () => {
     projects.splice(0, projects.length) // removes all elements from original array
-    projects.push(retrieveData())
+    projects.push(...retrievedData)
     loadProjects()
   })
 }
