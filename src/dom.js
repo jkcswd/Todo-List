@@ -58,7 +58,7 @@ const addProjectDeleteButton = (projectDiv) => {
   const deleteBtn = document.createElement('button')
 
   deleteBtn.classList.add('delete-btn')
-  deleteBtn.innerHTML = 'Delete'
+  deleteBtn.innerHTML = 'Delete Project'
   projectDiv.appendChild(deleteBtn)
 }
 
@@ -213,6 +213,8 @@ const todoModalSaveEventListener = (domElementsObject) => {
     domElementsObject.inputs.forEach(input => { input.value = '' })
     addTodo(formFieldsObject)
     loadProjects()
+
+    // TODO rerender display when new todo added
   })
 }
 
