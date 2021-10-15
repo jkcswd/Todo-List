@@ -8,4 +8,8 @@ const retrieveData = () => {
   return JSON.parse(localStorage.getItem('projects'))
 }
 
-export { storeData, retrieveData }
+const clearData = () => {
+  localStorage.clear()
+}
+
+export { storeData, retrieveData, clearData }
