@@ -133,6 +133,7 @@ const projectModalSaveEventListener = (domElementsObject) => {
 
 const addTodoEventListeners = () => {
   const domElementsObject = {
+    deleteBtns: document.querySelectorAll('.delete-btn'),
     todoBtns: document.querySelectorAll('.todo-btn'),
     saveBtn: document.querySelector('.save-todo'),
     closeBtn: document.querySelector('.close-todo'),
@@ -141,11 +142,24 @@ const addTodoEventListeners = () => {
   }
 
   todoButtonsEventListener(domElementsObject)
+  deleteButtonsEventListener(domElementsObject)
+
   if (!eventListenersInitialised) {
     closeButtonEventListener(domElementsObject)
     todoModalSaveEventListener(domElementsObject)
     eventListenersInitialised = true
   }
+}
+
+const deleteButtonsEventListener = (domElementsObject) => {
+  domElementsObject.deleteBtns.forEach(deleteBtn => {
+    deleteBtn.addEventListener('click', (e) => {
+      const projectDataIndex = e.currentTarget.parentElement.dataset.index
+
+      projects.splice(projectDataIndex, 1)
+      loadProjects()
+    })
+  })
 }
 
 const todoButtonsEventListener = (domElementsObject) => {
