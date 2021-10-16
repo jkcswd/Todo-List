@@ -109,6 +109,7 @@ const renderProjectToDisplay = (projectObject) => {
   projectDiv.appendChild(todoContainer)
   display.appendChild(projectDiv)
   deleteTodoEventListener(projectObject)
+  completeTodoEventListener(projectObject)
 }
 
 const renderTodosForProject = (projectObject) => {
@@ -122,9 +123,13 @@ const renderTodosForProject = (projectObject) => {
     todoDiv.setAttribute('data-index', `${todoCount}`)
     todoDiv.innerHTML += `<h3>${todo.title}</h3><p>${todo.description}</p><p>${todo.dueDate}</p>
                           <p>${todo.priority}</p><p>${todo.notes}</p>
-                          <button class="delete-todo">Delete Todo</button>`
+                          <button class="delete-todo display-btn">Delete Todo</button>
+                          <button class="edit-todo display-btn">Edit Todo</button>
+                          <button class="complete-todo display-btn">Complete Todo</button>`
     todoContainer.appendChild(todoDiv)
     todoCount++
+
+    if (todo.complete === true) { todoDiv.style.textDecoration = 'line-through' }
   })
 
   return todoContainer
@@ -140,6 +145,30 @@ const deleteTodoEventListener = (projectObject) => {
       projectObject.todoList.splice(dataIndex, 1)
       loadProjects()
       renderProjectToDisplay(projectObject)
+    })
+  })
+}
+const editTodoEventListener = (projectObject) => {
+  const editBtns = document.querySelectorAll('.edit-todo')
+
+  editBtns.forEach(editBtn => {
+    editBtn.addEventListener('click', (e) => {
+      const dataIndex = e.currentTarget.parentElement.dataset.index
+
+      
+    })
+  })
+}
+
+const completeTodoEventListener = (projectObject) => {
+  const completeBtns = document.querySelectorAll('.complete-todo')
+
+  completeBtns.forEach(completeBtn => {
+    completeBtn.addEventListener('click', (e) => {
+      const dataIndex = e.currentTarget.parentElement.dataset.index
+
+      projectObject.todoList[dataIndex].complete = true
+      renderTodosForProject(projectObject)
     })
   })
 }
