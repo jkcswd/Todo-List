@@ -158,12 +158,27 @@ const editTodoEventListener = (projectObject) => {
   const editBtns = document.querySelectorAll('.edit-todo')
   const modal = document.querySelector('.modal-todo-edit')
 
+  editTodoModalCloseEventListener(modal)
+  editTodoModalSaveEventListener(modal)
+
   editBtns.forEach(editBtn => {
     editBtn.addEventListener('click', (e) => {
       const dataIndex = e.currentTarget.parentElement.dataset.index
       modal.style.display = 'block'
     })
   })
+}
+
+const editTodoModalCloseEventListener = (modal) => {
+  const closeBtn = document.querySelector('.close-todo-edit')
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none'
+  })
+}
+
+const editTodoModalSaveEventListener = (modal) => {
+
 }
 
 const completeTodoEventListener = (projectObject) => {
