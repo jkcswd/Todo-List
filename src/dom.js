@@ -113,6 +113,7 @@ const renderProjectToDisplay = (projectObject) => {
   display.appendChild(projectDiv)
   deleteTodoEventListener(projectObject)
   completeTodoEventListener(projectObject)
+  editTodoEventListener(projectObject)
 }
 
 const renderTodosForProject = (projectObject) => {
@@ -155,12 +156,12 @@ const deleteTodoEventListener = (projectObject) => {
 
 const editTodoEventListener = (projectObject) => {
   const editBtns = document.querySelectorAll('.edit-todo')
+  const modal = document.querySelector('.modal-todo-edit')
 
   editBtns.forEach(editBtn => {
     editBtn.addEventListener('click', (e) => {
       const dataIndex = e.currentTarget.parentElement.dataset.index
-
-      
+      modal.style.display = 'block'
     })
   })
 }
