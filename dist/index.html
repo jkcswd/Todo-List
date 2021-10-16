@@ -57,6 +57,25 @@
         </div>
     </div>
 
+    <div class="modal-todo-edit modal">
+      <div class="modal-content">
+          <span class="close close-todo">&times;</span>
+          <button class="save save-todo" data-index="0">Save</button>
+          <form action="main.js" class="form">
+              <label for="title-todo">Title:</label>
+              <input type="text" id="title-todo" class="title-todo inputs-todo"/>
+              <label for="description-todo">Description:</label>
+              <input type="text" id="description-todo" class="description-todo inputs-todo"/>
+              <label for="due-date-todo">Due date:</label>
+              <input type="date" id="due-date-todo" class="due-date-todo inputs-todo"/>
+              <label for="priority-todo">Priority:</label>
+              <input type="number" id="priority-todo" class="priority-todo inputs-todo">
+              <label for="notes-todo">Notes:</label>
+              <input type="number" id="notes-todo" class="notes-todo inputs-todo">
+          </form>
+      </div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>
