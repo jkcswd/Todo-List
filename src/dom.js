@@ -126,10 +126,11 @@ const renderTodosForProject = (projectObject) => {
                           <button class="delete-todo display-btn">Delete Todo</button>
                           <button class="edit-todo display-btn">Edit Todo</button>
                           <button class="complete-todo display-btn">Complete Todo</button>`
-    todoContainer.appendChild(todoDiv)
-    todoCount++
 
     if (todo.complete === true) { todoDiv.style.textDecoration = 'line-through' }
+
+    todoContainer.appendChild(todoDiv)
+    todoCount++
   })
 
   return todoContainer
@@ -168,8 +169,9 @@ const completeTodoEventListener = (projectObject) => {
     completeBtn.addEventListener('click', (e) => {
       const dataIndex = e.currentTarget.parentElement.dataset.index
 
-      projectObject.todoList[dataIndex].complete = true
-      renderTodosForProject(projectObject)
+      projectObject.todoList[parseInt(dataIndex)].complete = true
+      loadProjects()
+      renderProjectToDisplay(projectObject)
     })
   })
 }
