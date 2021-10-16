@@ -46,6 +46,9 @@ const loadTodoItems = (project, projectDiv) => {
     const todoItem = document.createElement('li')
 
     todoItem.innerHTML += todo.title
+
+    if (todo.complete === true) { todoItem.style.textDecoration = 'line-through' }
+
     todoList.appendChild(todoItem)
   })
 
