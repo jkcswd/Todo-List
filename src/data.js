@@ -40,7 +40,7 @@ const addTodo = (formFieldsObject) => {
   projects[formFieldsObject.project].todoList.push(newTodo)
 }
 
-const initProjects = () => {
+const initialiseExampleProjects = () => {
   const defaultProject = new Project('Default', 'Default List')
   const exampleTodo = new Todo('Todo', 'example', '1/1/1', '1', 'This is an example todo item', defaultProject)
 
@@ -48,4 +48,4 @@ const initProjects = () => {
   projects.push(defaultProject)
 }
 
-export { projects, initProjects, addProject, addTodo }
+export { projects, initialiseExampleProjects, addProject, addTodo }

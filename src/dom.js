@@ -163,7 +163,7 @@ const editTodoEventListener = (projectObject) => {
 
   editBtns.forEach(editBtn => {
     editBtn.addEventListener('click', (e) => {
-      const dataIndex = e.currentTarget.parentElement.dataset.index
+      const dataIndex = e.currentTarget.parentElement.dataset.index // pass this to the edit modal listener?
       modal.style.display = 'block'
     })
   })
@@ -178,7 +178,7 @@ const editTodoModalCloseEventListener = (modal) => {
 }
 
 const editTodoModalSaveEventListener = (modal) => {
-
+// TODO
 }
 
 const completeTodoEventListener = (projectObject) => {
