@@ -30,10 +30,12 @@ h3 {
 /* main content */
 
 header {
+  display: flex;
+  justify-content: space-between;
+
   background-color: #0f149a;
   color: #fd9b4d;
   border-bottom: 2px solid #fd9b4d ;
-
 
   text-align: right;
   padding: 20px;
@@ -116,6 +118,29 @@ footer {
   font-size: 50px;
 }
 
+.storage,.delete-btn  {
+  background-color: rgba(0,0,0,0);
+  color: #fd9b4d;
+  border: 1px solid #fd9b4d;
+
+  transition: 0.3s;
+}
+.storage:hover,.delete-btn:hover {
+  scale: 1.05;
+  color: whitesmoke;
+  border: 1px solid whitesmoke;
+}
+
+.delete-todo {
+  background-color: rgba(0,0,0,0);
+  color: whitesmoke;
+  border: 1px solid whitesmoke;
+  transition: 0.3s;
+}
+
+.delete-todo:hover {
+  scale: 1.1;
+}
 /* modal */
 
 .modal {
