@@ -1,4 +1,4 @@
-import { initProjects } from './app'
+import { initProjects } from './data'
 import { loadProjects, initLocalStorageEventListeners } from './dom'
 
 const runApp = (() => {

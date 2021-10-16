@@ -1,5 +1,7 @@
-import { projects, addProject, addTodo } from './app'
-import { storeData, clearData, retrieveData } from './storage.js'
+import { projects, addProject, addTodo } from './data'
+import { storeData, clearData, retrieveData } from './storage'
+
+// TODO split DOM module into rendering and listener modules
 
 let eventListenersInitialised = false
 

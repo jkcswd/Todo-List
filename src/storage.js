@@ -1,4 +1,4 @@
-import { projects } from './app'
+import { projects } from './data'
 
 const storeData = () => {
   localStorage.setItem('projects', JSON.stringify(projects))
