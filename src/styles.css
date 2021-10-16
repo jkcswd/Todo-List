@@ -107,6 +107,16 @@ main {
   font-size: 50px;
 }
 
+.todo-div {
+  width: 50%;
+
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+
+  margin:20px;
+  padding: 10px;
+}
+
 footer {
   background-color: #0f149a;
   color: whitesmoke;
@@ -144,7 +154,9 @@ footer {
 .storage,.delete-btn  {
   background-color: rgba(0,0,0,0);
   color: #fd9b4d;
+
   border: 1px solid #fd9b4d;
+  border-radius: 5px;
 
   margin: 5px;
 
@@ -159,7 +171,10 @@ footer {
 .delete-todo {
   background-color: rgba(0,0,0,0);
   color: whitesmoke;
+
   border: 1px solid whitesmoke;
+  border-radius: 5px;
+
   transition: 0.3s;
 }
 
