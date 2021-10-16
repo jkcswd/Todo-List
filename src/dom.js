@@ -3,7 +3,7 @@ import { storeData, clearData, retrieveData } from './storage'
 
 // TODO split DOM module into rendering and listener modules
 
-let eventListenersInitialised = false
+let eventListenersInitialised = false // To stop multiple event listeners being attached to modal buttons
 
 const loadProjects = () => {
   const domCountAndProjectObject = {
@@ -148,6 +148,7 @@ const deleteTodoEventListener = (projectObject) => {
     })
   })
 }
+
 const editTodoEventListener = (projectObject) => {
   const editBtns = document.querySelectorAll('.edit-todo')
 
@@ -205,7 +206,7 @@ const addTodoEventListeners = () => {
   todoButtonsEventListener(domElementsObject)
   deleteButtonsEventListener(domElementsObject)
 
-  if (!eventListenersInitialised) {
+  if (!eventListenersInitialised) { // To stop multiple event listeners being attached to modal buttons
     closeButtonEventListener(domElementsObject)
     todoModalSaveEventListener(domElementsObject)
     eventListenersInitialised = true
