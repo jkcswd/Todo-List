@@ -105,7 +105,7 @@ const renderProjectToDisplay = (projectObject) => {
   display.innerHTML = ''
   projectDiv.innerHTML += `<div class="project-display-title">
                           <h2>${projectObject.title}</h2><p>${[projectObject.description]}</p>
-                          </div>`
+                          </div><div class="border"></div>`
   projectDiv.appendChild(todoContainer)
   display.appendChild(projectDiv)
   deleteTodoEventListener(projectObject)

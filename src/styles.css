@@ -27,6 +27,13 @@ h3 {
   margin: 0px
 }
 
+.border {
+  height: 5px;
+  width: 50%;
+  border-bottom: 1px solid whitesmoke ;
+  margin-bottom: 20px;
+}
+
 /* main content */
 
 header {
@@ -97,7 +104,6 @@ main {
 }
 
 .display h2 {
-  text-decoration: underline;
   font-size: 50px;
 }
 
