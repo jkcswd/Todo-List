@@ -40,12 +40,16 @@ const addEachProjectToDom = (domCountAndProjectObject) => {
 }
 
 const loadTodoItems = (project, projectDiv) => {
-  project.todoList.forEach(todo => {
-    const todoDiv = document.createElement('div')
+  const todoList = document.createElement('ul')
 
-    todoDiv.innerHTML += todo.title
-    projectDiv.appendChild(todoDiv)
+  project.todoList.forEach(todo => {
+    const todoItem = document.createElement('li')
+
+    todoItem.innerHTML += todo.title
+    todoList.appendChild(todoItem)
   })
+
+  projectDiv.appendChild(todoList)
 }
 
 const addTodoButton = (projectDiv) => {
