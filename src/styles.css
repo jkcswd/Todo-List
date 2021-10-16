@@ -57,7 +57,7 @@ header {
 
 main {
   width: 100%;
-  height: fit-content;
+  height: 100%;
 
   display: flex;
   flex-direction: row;
@@ -67,6 +67,9 @@ main {
   background-color: #0f149a;
   color: #fd9b4d;
   border-right: 2px solid #fd9b4d ;
+
+  display: block;
+  overflow: auto;
 
   width: 20%;
   padding: 10px;
@@ -92,8 +95,8 @@ main {
 }
 
 .display {
-  display: flex;
-  flex-direction: column;
+  display: block;
+  overflow: auto;
 
   background-color: #0f149a;
   color: whitesmoke;
