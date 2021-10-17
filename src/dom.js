@@ -201,6 +201,8 @@ const editTodoModalSaveEventListener = (projectObject, modal) => {
     todo.notes = editTodoFormObject.notes
 
     editTodoFormObject.inputs.forEach(input => { input.value = '' })
+    loadProjects()
+    renderProjectToDisplay(projectObject)
   })
 }
 
