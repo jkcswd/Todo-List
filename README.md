@@ -10,4 +10,4 @@ A todo list web app created by attempting to use SOLID principles in particular 
 - ESlint (Standard JS)
 
 ## How to 
-Use this link to see example 
+Use this link to see example https://jkcswd.github.io/Todo-List/
