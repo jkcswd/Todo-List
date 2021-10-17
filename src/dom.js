@@ -161,7 +161,7 @@ const editTodoEventListener = (projectObject) => {
   editBtns.forEach(editBtn => {
     editBtn.addEventListener('click', (e) => {
       modal.setAttribute('data-index', e.currentTarget.parentElement.dataset.index)
-      // so that save button listener on edit modal can get the correct todolist item to edit
+      // so that save button listener on edit modal can get the correct todo list item to edit
 
       modal.style.display = 'block'
     })
