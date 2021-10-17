@@ -3,7 +3,7 @@ import { storeData, clearData, retrieveData } from './storage'
 
 // TODO split DOM module into rendering and listener modules
 
-let eventListenersInitialised = false // To stop multiple event listeners being attached to modal buttons
+let eventListenersInitialised = false // To stop multiple event listeners being attached to modal buttons . Refactor?
 
 const loadProjects = () => {
   const domCountAndProjectObject = {
@@ -158,15 +158,17 @@ const editTodoEventListener = (projectObject) => {
   const editBtns = document.querySelectorAll('.edit-todo')
   const modal = document.querySelector('.modal-todo-edit')
 
-  editTodoModalCloseEventListener(modal)
-  editTodoModalSaveEventListener(modal)
-
   editBtns.forEach(editBtn => {
     editBtn.addEventListener('click', (e) => {
-      const dataIndex = e.currentTarget.parentElement.dataset.index // pass this to the edit modal listener?
+      modal.setAttribute('data-index', e.currentTarget.parentElement.dataset.index)
+      // so that save button listener on edit modal can get the correct todolist item to edit
+
       modal.style.display = 'block'
     })
   })
+
+  editTodoModalCloseEventListener(modal)
+  editTodoModalSaveEventListener(projectObject, modal)
 }
 
 const editTodoModalCloseEventListener = (modal) => {
@@ -177,8 +179,29 @@ const editTodoModalCloseEventListener = (modal) => {
   })
 }
 
-const editTodoModalSaveEventListener = (modal) => {
-// TODO
+const editTodoModalSaveEventListener = (projectObject, modal) => {
+  const saveBtn = document.querySelector('.save-todo-edit')
+
+  saveBtn.addEventListener('click', () => {
+    const editTodoFormObject = {
+      title: document.querySelector('.title-todo-edit').value,
+      description: document.querySelector('.description-todo-edit').value,
+      dueDate: document.querySelector('.due-date-todo-edit').value,
+      priority: document.querySelector('.priority-todo-edit').value,
+      notes: document.querySelector('.notes-todo-edit').value,
+      inputs: document.querySelectorAll('.inputs-edit')
+    }
+    const todo = projectObject.todoList[parseInt(modal.dataset.index)]
+
+    modal.style.display = 'none'
+    todo.title = editTodoFormObject.title
+    todo.description = editTodoFormObject.description
+    todo.dueDate = editTodoFormObject.dueDate
+    todo.priority = editTodoFormObject.priority
+    todo.notes = editTodoFormObject.notes
+
+    editTodoFormObject.inputs.forEach(input => { input.value = '' })
+  })
 }
 
 const completeTodoEventListener = (projectObject) => {
